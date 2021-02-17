@@ -14,7 +14,7 @@ namespace ConsoleUI
             Console.WriteLine("Yeni bir araba ekle");
             carManager.Add(new Car
             {
-                Id=1,
+                
                 ColorId=2,
                 CarName="Volvo",           
                 BrandId=3,
