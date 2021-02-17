@@ -47,7 +47,7 @@ namespace ConsoleUI
                 BrandId = 8,
                 ColorId = 1,
                 DailyPrice = 600,
-                ModelYear = 2019,
+                ModelYear = "2019",
                 Description = "Otomatik"
             });
             Console.WriteLine(carAdded.Message);
@@ -55,7 +55,7 @@ namespace ConsoleUI
             //Araç silme ve güncelleme
             var deleted = carManager.Delete(new Car { CarId = 1009 });
             Console.WriteLine(deleted.Message);
-            var updated = carManager.Update(new Car { CarId = 1015, BrandId = 17, ColorId = 3, DailyPrice = 485, ModelYear = 2020, Description = "Otomatik" });
+            var updated = carManager.Update(new Car { CarId = 1015, BrandId = 17, ColorId = 3, DailyPrice = 485, ModelYear = "2019", Description = "Otomatik" });
             Console.WriteLine(updated.Message);
 
             //Araçların tümünün ve marka/renk id'ye göre listelenmesi

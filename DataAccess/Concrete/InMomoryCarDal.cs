@@ -1,5 +1,6 @@
 ﻿using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,11 +17,11 @@ namespace DataAccess.Concrete
         {
             _cars = new List<Car>
             {
-                new Car{Id=1,BrandId=1,ColorId=10,DailyPrice=200,ModelYear=2021,Description="Audi"},
-                new Car{Id=2,BrandId=2,ColorId=11,DailyPrice=120,ModelYear=2015,Description="Opel"},
-                new Car{Id=3,BrandId=3,ColorId=12,DailyPrice=100,ModelYear=2010,Description="Nissan"},
-                new Car{Id=4,BrandId=4,ColorId=13,DailyPrice=170,ModelYear=2020,Description="Toyota"},
-                new Car{Id=5,BrandId=5,ColorId=14,DailyPrice=190,ModelYear=2018,Description="BMW"},
+                new Car{Id=1,BrandId=1,ColorId=10,DailyPrice=200,ModelYear="2021",Description="Audi"},
+                new Car{Id=2,BrandId=2,ColorId=11,DailyPrice=120,ModelYear="2015",Description="Opel"},
+                new Car{Id=3,BrandId=3,ColorId=12,DailyPrice=100,ModelYear="2010",Description="Nissan"},
+                new Car{Id=4,BrandId=4,ColorId=13,DailyPrice=170,ModelYear="2020",Description="Toyota"},
+                new Car{Id=5,BrandId=5,ColorId=14,DailyPrice=190,ModelYear="2018",Description="BMW"},
             };
         }
         public void Add(Car car)
@@ -53,6 +54,12 @@ namespace DataAccess.Concrete
         {
             return _cars.Where(c => c.Id ==Id).ToList();
         }
+
+        public List<CarDetailDto> GetCarDetails()
+        {
+            throw new NotImplementedException();
+        }
+
         public void Update(Car car)
         {
             Car carToUpdate = _cars.SingleOrDefault(c => c.Id == car.Id);
