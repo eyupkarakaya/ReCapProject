@@ -23,6 +23,7 @@ namespace Business.Constants
         public static string ColorDeleted = "Renk silindi";
         public static string ColorUpdated = "Renk güncellendi";
         public static string ColorsListed = "Renkler Listelendi";
-
+        internal static string CannotBeRented;
+        internal static string NoCar;
     }
 }
