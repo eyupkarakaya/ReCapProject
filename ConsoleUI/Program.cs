@@ -11,9 +11,9 @@ namespace ConsoleUI
         static void Main(string[] args)
         {
             GetCarDetailsTest();
-            BrandTest();
-            ColorTest();
-            CarTest();
+            //BrandTest();
+            //ColorTest();
+            //CarTest();
         }
 
         private static void GetCarDetailsTest()
@@ -47,15 +47,15 @@ namespace ConsoleUI
                 BrandId = 8,
                 ColorId = 1,
                 DailyPrice = 600,
-                ModelYear = "2019",
+                ModelYear = 2019,
                 Description = "Otomatik"
             });
             Console.WriteLine(carAdded.Message);
 
             //Araç silme ve güncelleme
-            var deleted = carManager.Delete(new Car { CarId = 1009 });
+            var deleted = carManager.Delete(new Car { Id = 1 });
             Console.WriteLine(deleted.Message);
-            var updated = carManager.Update(new Car { CarId = 1015, BrandId = 17, ColorId = 3, DailyPrice = 485, ModelYear = "2019", Description = "Otomatik" });
+            var updated = carManager.Update(new Car { Id = 1, BrandId = 17, ColorId = 3, DailyPrice = 485, ModelYear = 2019, Description = "Otomatik" });
             Console.WriteLine(updated.Message);
 
             //Araçların tümünün ve marka/renk id'ye göre listelenmesi
@@ -68,13 +68,13 @@ namespace ConsoleUI
             Console.WriteLine("------------------Arabalar listeleri  marka id leri ------------------------");
             foreach (var car in carManager.GetCarsByBrandId(2).Data)
             {
-                Console.WriteLine(car.CarId + " " + car.Description + " Marka ID:  " + car.BrandId);
+                Console.WriteLine(car.Id + " " + car.Description + " Marka ID:  " + car.BrandId);
             }
 
             Console.WriteLine("--------------Arabalar listeleri  renk  id leri ----------------------------");
             foreach (var car in carManager.GetCarsByColorId(3).Data)
             {
-                Console.WriteLine(car.CarId + car.Description + " Color ID " + car.ColorId);
+                Console.WriteLine(car.Id + car.Description + " Color ID " + car.ColorId);
             }
         }
 
@@ -85,7 +85,7 @@ namespace ConsoleUI
             //Yeni Marka Ekleme
             var brandAdded = brandManager.Add(new Brand
             {
-                BrandName = "volvo"
+                BrandName = "mazda"
             });
             Console.WriteLine(brandAdded.Message);
 
@@ -116,9 +116,10 @@ namespace ConsoleUI
                 ColorName = "Sarı"
             });
             Console.WriteLine(colorAdded.Message);
+            
 
             //Renk silme ve güncelleme
-            var colorUpdated = colorManager.Update(new Color { ColorId = 5, ColorName = "Mavi" });
+            var colorUpdated = colorManager.Update(new Color { ColorId = 5, ColorName = "Kırmızı" });
             Console.WriteLine(colorUpdated.Message);
             var colorDeleted = colorManager.Delete(new Color { ColorId = 7 });
             Console.WriteLine(colorDeleted.Message);
