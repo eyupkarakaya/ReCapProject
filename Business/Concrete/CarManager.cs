@@ -63,6 +63,33 @@ namespace Business.Concrete
         {
             throw new NotImplementedException();
         }
+        public IResult Insert(Car entity)
+        {
+            if (entity.Description.Length >= 2)
+            {
+                if (entity.DailyPrice > 0)
+                {
+                    _carDal.Add(entity);
+                    return new SuccessResult(Messages.CarAdded);
+
+                }
+                else
+                {
+                    return new ErrorResult(Messages.CarDailyPriceInvalid);
+                }
+            }
+            else
+            {
+                return new ErrorResult(Messages.CarDescriptionInvalid);
+            }
+
+        }
+        public IDataResult<Car> GetById(int id)
+        {
+            return new SuccessDataResult<Car>(_carDal.Get(p => p.Id == id));
+        }
+
+
 
     }
 }

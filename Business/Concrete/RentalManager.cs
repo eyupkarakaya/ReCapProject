@@ -41,6 +41,26 @@ namespace Business.Concrete
             _rentalDal.Delete(rental);
             return new SuccessResult();
         }
+        public IDataResult<Rental> GetById(int id)
+        {
+            return new SuccessDataResult<Rental>(_rentalDal.Get(p => p.RentalId == id));
+        }
+
+        public IResult Insert(Rental entity)
+        {
+            var getByCarId = _rentalDal.GetAll(p => p.CarId == entity.CarId);
+
+            foreach (var car in getByCarId)
+            {
+                if (car.ReturnDate == null)
+                {
+                    return new ErrorResult(Messages.CarUndelivered);
+                }
+            }
+
+            _rentalDal.Add(entity);
+            return new SuccessResult(Messages.RentalAdded);
+        }
 
         public IDataResult<List<Rental>> GetAll()
         {

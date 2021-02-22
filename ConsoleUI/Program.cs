@@ -28,7 +28,7 @@ namespace ConsoleUI
                 foreach (var item in result.Data)
                 {
                     Console.WriteLine(string.Format("{0,-5} | {1,-10} | {2,-25} | {3,-10} | {4,-5} | {5,-5}",
-                        item.CarId, item.BrandName, item.CarName, item.ModelYear, item.ColorName, item.DailyPrice));
+                        item.CarId, item.BrandName, item.ModelYear, item.ColorName, item.DailyPrice));
                 }
             }
             else

@@ -20,4 +20,3 @@ namespace DataAccess.Concrete.EntityFramework
         public DbSet<Rental> Rentals { get; set; }
     }
 }
-//burada yazan Cardb nereye olusturdunuz hoca gibi yapyyım ok problem degil 

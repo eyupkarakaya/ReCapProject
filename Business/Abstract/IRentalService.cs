@@ -7,12 +7,7 @@ using System.Text;
 
 namespace Business.Abstract
 {
-    public interface IRentalService
+    public interface IRentalService : IServiceBase<Rental>
     {
-        IDataResult<List<Rental>> GetAll();
-        IResult Add(Rental rental);
-        IResult Delete(Rental rental);
-        IResult Update(Rental rental);
-        IDataResult<List<RentalDetailDTO>> GetRentalDetailDTOs();
     }
 }

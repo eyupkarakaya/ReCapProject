@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.Constants;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -39,5 +40,17 @@ namespace Business.Concrete
             _userDal.Update(user);
             return new SuccessResult();
         }
+
+        public IDataResult<User> GetById(int id)
+        {
+            return new SuccessDataResult<User>(_userDal.Get(p => p.UserId == id));
+        }
+
+        public IResult Insert(User entity)
+        {
+            _userDal.Add(entity);
+            return new SuccessResult(Messages.UserAdded);
+        }
+
     }
 }

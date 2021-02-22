@@ -44,6 +44,17 @@ namespace Business.Concrete
             _brandDal.Update(brand);
             return new SuccessResult(Messages.BrandUpdated);
         }
-
+        public IResult Insert(Brand entity)
+        {
+            if (entity.BrandName.Length >= 2)
+            {
+                _brandDal.Add(entity);
+                return new SuccessResult(Messages.BrandAdded);
+            }
+            else
+            {
+                return new ErrorResult(Messages.BrandNameInvalid);
+            }
+        }
     }
 }

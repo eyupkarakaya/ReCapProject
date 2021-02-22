@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.Constants;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -25,6 +26,12 @@ namespace Business.Concrete
             return new SuccessResult();
         }
 
+        public IResult Insert(Customer entity)
+        {
+            _customerDal.Add(entity);
+            return new SuccessResult(Messages.CustomerAdded);
+        }
+
         public IResult Delete(Customer customer)
         {
             _customerDal.Delete(customer);
@@ -41,10 +48,9 @@ namespace Business.Concrete
             _customerDal.Update(customer);
             return new SuccessResult();
         }
-
-        public IDataResult<List<CustomerDetailDTO>> GetCustomerDetailDTOs()
+        public IDataResult<Customer> GetById(int id)
         {
-            return new SuccessDataResult<List<CustomerDetailDTO>>(_customerDal.GetCustomerDetailDTOs());
+            return new SuccessDataResult<Customer>(_customerDal.Get(p => p.UserId == id));
         }
     }
 }

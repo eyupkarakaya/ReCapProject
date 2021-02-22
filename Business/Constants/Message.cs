@@ -6,6 +6,12 @@ namespace Business.Constants
 {
     public static class Messages
     {
+        internal static readonly string UserAdded;
+        internal static readonly string CustomerAdded;
+        internal static readonly string ColorNameInvalid;
+        internal static readonly string CarUndelivered;
+        internal static readonly string RentalAdded;
+        internal static readonly string BrandNameInvalid;
         public static string NameInvalid = "Geçersiz";
         public static string MaintenanceTime = "Sistem Bakımda";
 
@@ -25,5 +31,7 @@ namespace Business.Constants
         public static string ColorsListed = "Renkler Listelendi";
         internal static string CannotBeRented;
         internal static string NoCar;
+        internal static string CarDescriptionInvalid;
+        internal static string CarDailyPriceInvalid;
     }
 }

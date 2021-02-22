@@ -33,12 +33,23 @@ namespace Business.Concrete
         {
             return new SuccessDataResult<List<Color>>(_colorDal.GetAll());
         }
+        public IResult Insert(Color entity)
+        {
+            if (entity.ColorName.Length >= 2)
+            {
+                _colorDal.Add(entity);
+                return new SuccessResult(Messages.ColorAdded);
+            }
+            else
+            {
+                return new ErrorResult(Messages.ColorNameInvalid);
+            }
 
+        }
         public IDataResult<Color> GetById(int colorId)
         {
             return new SuccessDataResult<Color>(_colorDal.Get(c => c.ColorId == colorId));
         }
-
         public IResult Update(Color color)
         {
             _colorDal.Update(color);
