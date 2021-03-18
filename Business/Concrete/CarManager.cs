@@ -89,7 +89,23 @@ namespace Business.Concrete
             return new SuccessDataResult<Car>(_carDal.Get(p => p.Id == id));
         }
 
+        public IDataResult<List<Car>> GetByBrandId(int id)
+        {
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(p => p.BrandId == id));
+        }
 
+        public IDataResult<List<Car>> GetByDailyPrice(decimal min, decimal max)
+        {
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(p => p.DailyPrice >= min && p.DailyPrice <= max));
+        }
 
+        public IDataResult<List<CarDetailDto>> GetCarDetail()
+        {
+            if (DateTime.Now.Hour == 02)
+            {
+                return new ErrorDataResult<List<CarDetailDto>>(Messages.MaintenanceTime);
+            }
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails());
+        }
     }
 }

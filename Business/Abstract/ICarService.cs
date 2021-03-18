@@ -7,10 +7,16 @@ using System.Text;
 
 namespace Business.Abstract
 {
-    public interface ICarService:IServiceBase<Car>
-    {     
-        IDataResult<List<Car>> GetCarsByBrandId(int brandId);
-        IDataResult<List<Car>> GetCarsByColorId(int colorId);
-        IDataResult<List<CarDetailDto>> GetCarDetails();  
-    }   
+    public interface ICarService
+    {
+    IResult Add(Car car);
+    IResult Delete(Car car);
+    IResult Update(Car car);
+    IDataResult<List<Car>> GetAll();
+    IDataResult<Car> GetById(int carId);
+    IDataResult<List<Car>> GetByBrandId(int id);
+    IDataResult<List<Car>> GetByDailyPrice(decimal min, decimal max);
+    IDataResult<List<CarDetailDto>> GetCarDetail();
+   
+    }
 }
